@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form action="/shorten" method="post">
+      <div class="m-3">
+        <h2>URL Shortener</h2>
+        <label for="url" class="form-label">URL</label>
+        <input type="text" id="url" name="url" class="form-control mb-2" />
+        <button class="btn btn-primary">Shorten</button>
+      </div>
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <th scope="col">Long Url</th>
+        <th scope="col">Short Url</th>
+      </thead>
+      <tbody>
+        <% for(let url of urls) { %>
+        <tr>
+          <td><a href="<%= url.longUrl %> "><%= url.longUrl %> </a></td>
+          <td><a href="<%= url.shortUrl %> " target="_blank"><%= url.shortUrl %> </a></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
