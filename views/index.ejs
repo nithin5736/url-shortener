@@ -13,12 +13,21 @@
     />
   </head>
   <body>
-    <form action="/shorten" method="post">
+    <form action="/shorten" method="post" class="validate-form" novalidate>
       <div class="m-3">
         <h2>URL Shortener</h2>
         <label for="url" class="form-label">URL</label>
-        <input type="text" id="url" name="url" class="form-control mb-2" />
-        <button class="btn btn-primary">Shorten</button>
+        <input
+          type="text"
+          id="url"
+          name="url"
+          class="form-control mb-2"
+          required
+        />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <button class="btn btn-primary" type="submit">Shorten</button>
       </div>
     </form>
 
@@ -31,7 +40,11 @@
         <% for(let url of urls) { %>
         <tr>
           <td><a href="<%= url.longUrl %> "><%= url.longUrl %> </a></td>
-          <td><a href="<%= url.shortUrl %> " target="_blank"><%= url.shortUrl %> </a></td>
+          <td>
+            <a href="<%= url.shortUrl %> " target="_blank"
+              ><%= url.shortUrl %>
+            </a>
+          </td>
         </tr>
         <% } %>
       </tbody>
@@ -41,5 +54,26 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".validate-form");
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
   </body>
 </html>
