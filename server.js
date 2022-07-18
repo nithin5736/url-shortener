@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const Url = require("./models/url");
 
+require('dotenv').config();
+
 mongoose
   .connect("mongodb://localhost:27017/urlshortener", {
     useNewUrlParser: true,
