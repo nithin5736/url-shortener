@@ -6,7 +6,7 @@ const Url = require("./models/url");
 require('dotenv').config();
 
 mongoose
-  .connect("mongodb://localhost:27017/urlshortener", {
+  .connect("mongodb+srv://sai-nithin:gubba12345@url-shortener.zr3acdw.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
